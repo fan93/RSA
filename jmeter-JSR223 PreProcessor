@@ -1,0 +1,13 @@
+load("security.js");
+var password=vars.get("passwd");
+//print (password);
+var modulus=vars.get("modulus");
+
+var exponent=vars.get("exponent");
+function RSA(password,exponent,modulus){
+	var publicKey = new RSAUtils.getKeyPair(exponent,'',modulus);
+	return RSAUtils.encryptedString(publicKey,password);
+	}
+var data=RSA(password,exponent,modulus);
+//print (data);
+vars.put("Password",data);
